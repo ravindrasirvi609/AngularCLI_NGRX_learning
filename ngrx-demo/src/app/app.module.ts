@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from 'src/app/state/counter/counter.reducer';
 import { CounterComponent } from './components/counter/counter.component';
+import { LoginComponent } from './core/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CounterComponent
+    CounterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
