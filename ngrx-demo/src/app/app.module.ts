@@ -7,6 +7,9 @@ import { StoreModule } from '@ngrx/store';
 import { counterReducer } from 'src/app/state/counter/counter.reducer';
 import { CounterComponent } from './components/counter/counter.component';
 import { LoginComponent } from './core/login/login.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { LoginComponent } from './core/login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     StoreModule.forRoot({counter:counterReducer})
   ],
   providers: [],
