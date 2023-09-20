@@ -7,19 +7,19 @@ import { catchError, map } from "rxjs/operators";
   providedIn: "root",
 })
 export class AuthService {
-  private apiUrl = "http://localhost:3000";
+  private apiUrl = "http://localhost:3000/users";
 
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
-    const loginEndpoint = `${this.apiUrl}/user`;
+    const loginEndpoint = `${this.apiUrl}`;
     const credentials = { username, password };
     return this.http.post(loginEndpoint, credentials).pipe(
       map((response: any) => {
         if (response && response.user) {
           return response.user;
         } else {
-          throw new Error("Invalid credentials or server response.");
+          throw alert("Invalid credentials or server response.");
         }
       }),
       catchError((error) => {

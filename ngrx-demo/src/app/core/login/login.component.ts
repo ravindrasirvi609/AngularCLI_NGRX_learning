@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Observable } from "rxjs";
+import { AuthService } from "../state/auth.service";
 
 @Component({
   selector: "app-login",
@@ -9,14 +10,10 @@ import { Observable } from "rxjs";
   styles: [],
 })
 export class LoginComponent implements OnInit {
-onSubmit() {
-  console.log(this.loginForm.value);
-  
-}
   private baseUrl = "http://localhost:3000";
   loginForm!: FormGroup;
 
-  constructor( private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -28,4 +25,19 @@ onSubmit() {
   // getUsers(): Observable<any[]> {
   //   return this.http.get<any[]>(`${this.baseUrl}/users`);
   // }
+
+  onSubmit() {
+    console.log(this.loginForm.value);
+
+    this.authService
+      .login(this.loginForm.value.username, this.loginForm.value.password)
+      .subscribe({
+        next(response) {
+          console.log(response);
+          if (response.status ===200) {
+          alert("success message sent"); 
+          }
+        },
+      });
+  }
 }
