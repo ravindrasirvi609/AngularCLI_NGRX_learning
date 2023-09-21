@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../state/auth.service";
 import { Router } from "@angular/router";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-login",
@@ -12,7 +13,11 @@ export class LoginComponent implements OnInit {
   private baseUrl = "http://localhost:3000";
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ){}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -32,7 +37,9 @@ export class LoginComponent implements OnInit {
       .login(this.loginForm.value.username, this.loginForm.value.password)
       .subscribe({
         next(response) {
-     //     this.router.navigate(['/counter']);
+          if (response.user) {
+           // this.router.navigate(["/counter"]);
+          }
 
           console.log(response);
           if (response.status === 200) {
