@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../state/auth.service";
-import { Router } from "@angular/router";
-import { Observable } from "rxjs";
+
 
 @Component({
   selector: "app-login",
@@ -33,7 +32,6 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next(response) {
           if (response.user) {
-           // this.router.navigate(["/counter"]);
           }
         },
       });
