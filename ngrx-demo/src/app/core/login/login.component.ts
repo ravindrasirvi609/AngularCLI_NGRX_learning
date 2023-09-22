@@ -10,13 +10,11 @@ import { Observable } from "rxjs";
   styles: [],
 })
 export class LoginComponent implements OnInit {
-  private baseUrl = "http://localhost:3000";
   loginForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
   ){}
 
   ngOnInit() {
@@ -26,9 +24,6 @@ export class LoginComponent implements OnInit {
       rememberMe: [false],
     });
   }
-  // getUsers(): Observable<any[]> {
-  //   return this.http.get<any[]>(`${this.baseUrl}/users`);
-  // }
 
   onSubmit() {
     console.log(this.loginForm.value);
@@ -39,11 +34,6 @@ export class LoginComponent implements OnInit {
         next(response) {
           if (response.user) {
            // this.router.navigate(["/counter"]);
-          }
-
-          console.log(response);
-          if (response.status === 200) {
-            alert("success message sent");
           }
         },
       });

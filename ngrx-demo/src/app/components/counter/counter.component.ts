@@ -5,16 +5,7 @@ import * as CounterActions from "src/app/state/counter/counter.action";
 
 @Component({
   selector: "app-counter",
-  template: `
-    <div class="my-3">
-      {{ counter$ | async }}
-    </div>
-    <div class="my-3">
-      <button class="btn btn-primary" (click)="increment()">Increment</button>
-      <button class="btn btn-danger" (click)="decrement()">Decrement</button>
-      <button class="btn btn-secondary" (click)="resetSate()">Reset</button>
-    </div>
-  `,
+  templateUrl: "./counter.component.html",
   styles: [],
 })
 export class CounterComponent {
